@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-guard"
+version = "0.1.0"
+description = "Human-in-the-loop interception of MCP tool calls made by Claude Desktop and Claude Web"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+# core is stdlib only; aiohttp is just for the HTTP gateway
+dependencies = []
+
+[project.optional-dependencies]
+gateway = ["aiohttp>=3.9"]
+dev = ["aiohttp>=3.9", "pytest>=7"]
+
+[project.scripts]
+mcp-guard = "mcp_guard.cli:main"
+
+[tool.setuptools]
+packages = ["mcp_guard", "mcp_guard.prompters"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
